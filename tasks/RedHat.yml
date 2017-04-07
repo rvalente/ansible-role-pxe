@@ -1,0 +1,24 @@
+---
+- name: install syslinux-tftpboot
+  package:
+    name: syslinux-tftpboot
+    state: present
+  become: true
+
+- name: create pxelinux directory
+  file:
+    path: "{{ pxe_pxelinux_dir }}"
+    state: directory
+  become: true
+
+- name: create pxelinux.cfg directory
+  file:
+    path: "{{ pxe_pxelinuxcfg_dir }}"
+    state: directory
+  become: true
+
+- name: create default pxelinux config
+  template:
+    src: default.j2
+    dest: "{{ pxe_pxelinuxcfg_dir }}/default"
+  become: true

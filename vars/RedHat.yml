@@ -1,0 +1,3 @@
+---
+pxe_pxelinux_dir: /var/lib/tftpboot/pxelinux
+pxe_pxelinuxcfg_dir: "{{ pxe_pxelinux_dir }}/pxelinux.cfg"

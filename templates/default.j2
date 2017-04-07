@@ -1,0 +1,18 @@
+default vesamenu.c32
+prompt 1
+timeout 600
+
+display boot.msg
+
+label linux
+  menu label ^Install system
+  menu default
+  kernel images/RHEL-7.1/vmlinuz
+  append initrd=images/RHEL-7.1/initrd.img ip=dhcp inst.repo=http://{{ pxe_}}/mnt/archive/RHEL-7/7.x/Server/x86_64/os/
+label rescue
+  menu label ^Rescue installed system
+  kernel images/RHEL-7.1/vmlinuz
+  append initrd=images/RHEL-7.1/initrd.img rescue
+label local
+  menu label Boot from ^local drive
+  localboot 0xffff
